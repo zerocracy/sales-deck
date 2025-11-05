@@ -16,6 +16,7 @@
 \usepackage[export]{adjustbox}
 \usepackage{anyfontsize}
 \usepackage{booktabs}
+\usepackage{href-ul}
 \usepackage{csquotes}
 \usepackage{textcomp}
 \usepackage{iexec}
@@ -58,13 +59,25 @@
 \slide{
   \begin{minipage}{0.65\textwidth}
   \centering
-  \includegraphics[valign=t,width=\linewidth]{vitals.png}\par
+  \includegraphics[valign=t,width=.8\linewidth]{vitals.png}\par
   {\scriptsize\url{https://zerocracy.github.io/judges-action/zerocracy-vitals.html}\par}
   \end{minipage}\hfill
   \begin{minipage}{0.34\textwidth}
   \raggedright
-  Add our plugin to your GitHub repo --- it instantly begins analyzing issues and pull requests,
+  Add \href{https://github.com/zerocracy/judges-action}{our plugin}
+  to your GitHub repo --- it instantly begins analyzing issues and pull requests,
   transforming your team's activity into actionable performance scores.
+  \end{minipage}}
+
+\slide{
+  \begin{minipage}{0.65\textwidth}
+  \centering
+  \includegraphics[valign=t,width=.8\linewidth]{comment.png}\par
+  {\scriptsize\url{https://github.com/objectionary/eo/pull/4552}\par}
+  \end{minipage}\hfill
+  \begin{minipage}{0.34\textwidth}
+  \raggedright
+  Using predefined rules and AI-powered judgment, our chatbot assigns points, explains each decision, and guides programmers to improve.
   \end{minipage}}
 
 \end{document}
