@@ -1,4 +1,4 @@
-# Brand Book of Zerocracy
+# Sales Deck of Zerocracy
 
 [![make](https://github.com/zerocracy/sales-deck/actions/workflows/latexmk.yml/badge.svg)](https://github.com/zerocracy/sales-deck/actions/workflows/latexmk.yml)
 
