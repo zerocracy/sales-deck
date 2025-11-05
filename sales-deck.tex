@@ -13,6 +13,7 @@
   \newfontfamily\cyrillicfonttt{Noto Sans Mono}
 \usepackage{microtype}
 \usepackage{tikz}
+\usepackage[export]{adjustbox}
 \usepackage{anyfontsize}
 \usepackage{booktabs}
 \usepackage{csquotes}
@@ -55,13 +56,15 @@
   {\Large\href{https://www.zerocracy.com}{zerocracy.com}\par}}
 
 \slide{
-  \begin{minipage}[t]{0.65\textwidth}
-  \includegraphics[width=\linewidth]{vitals.png}\par
+  \begin{minipage}{0.65\textwidth}
+  \centering
+  \includegraphics[valign=t,width=\linewidth]{vitals.png}\par
   {\scriptsize\url{https://zerocracy.github.io/judges-action/zerocracy-vitals.html}\par}
   \end{minipage}\hfill
-  \begin{minipage}[t]{0.34\textwidth}
-  Your project may have the same score table,
-  where most productive programmers are at the top.
+  \begin{minipage}{0.34\textwidth}
+  \raggedright
+  Add our plugin to your GitHub repo --- it instantly begins analyzing issues and pull requests,
+  transforming your team's activity into actionable performance scores.
   \end{minipage}}
 
 \end{document}
