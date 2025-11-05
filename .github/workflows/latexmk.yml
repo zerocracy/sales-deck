@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: Copyright (c) 2024-2025 Zerocracy
+# SPDX-License-Identifier: MIT
+---
+# yamllint disable rule:line-length
+name: latexmk
+'on':
+  push:
+    branches:
+      - master
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  latexmk:
+    timeout-minutes: 15
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: yegor256/latexmk-action@0.18.0
+        with:
+          opts: -pdf
+          debs: fonts-noto-core fonts-noto-extra
+          depends: DEPENDS.txt
+      - run: |
+          mkdir gh-pages
+          cp sales-deck.pdf gh-pages
+      - uses: JamesIves/github-pages-deploy-action@v4.7.3
+        with:
+          branch: gh-pages
+          folder: gh-pages
+          clean: true
+        if: github.ref == 'refs/heads/master'

@@ -1,0 +1,57 @@
+% SPDX-FileCopyrightText: Copyright (c) 2024-2025 Zerocracy
+% SPDX-License-Identifier: MIT
+
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+  \setmainlanguage{english}
+  \setmainfont{Noto Serif}
+  \setsansfont{Noto Sans}
+  \setmonofont{Noto Sans Mono}
+  \newfontfamily\cyrillicfont{Noto Serif}
+  \newfontfamily\cyrillicfontsf{Noto Sans}
+  \newfontfamily\cyrillicfonttt{Noto Sans Mono}
+\usepackage{microtype}
+\usepackage{tikz}
+\usepackage{anyfontsize}
+\usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage{textcomp}
+\usepackage{iexec}
+\usepackage{svg}
+\usepackage{multicol}
+\usepackage{setspace}
+\usepackage[paperwidth=11in, paperheight=5in]{geometry}
+\usepackage{hyperref}
+  \hypersetup{colorlinks=true,allcolors=zblue}
+\usepackage{xcolor}
+  \definecolor{zred}{HTML}{ba1200}
+  \definecolor{zblue}{HTML}{33658a}
+  \definecolor{zblack}{HTML}{0c090d}
+\usepackage{graphicx}
+\pagestyle{empty}
+
+\newcommand\slide[1]{%
+  \pagebreak\topskip0pt\vspace*{\fill}%
+  \begin{center}\LARGE%
+  #1
+  \end{center}%
+  \vspace*{\fill}}
+
+\pagecolor{white}
+
+\begin{document}
+\color{zblack}
+
+\sffamily
+
+\iexec[quiet,log]{wget --no-check-certificate -nc --quiet https://www.zerocracy.com/svg/logo.svg}
+
+\slide{
+  \includesvg[width=4em]{logo.svg} \par
+  \vspace{1em}
+  Our data reveals the true impact of every developer, empowering you to gamify performance and reward excellence.\par
+  \vspace{1em}
+  {\Large\href{https://www.zerocracy.com}{zerocracy.com}\par}}
+
+\end{document}
