@@ -18,6 +18,7 @@
 \usepackage[export]{adjustbox}
 \usepackage{anyfontsize}
 \usepackage{booktabs}
+\usepackage{tabularx}
 \usepackage{href-ul}
 \usepackage{csquotes}
 \usepackage{textcomp}
@@ -32,6 +33,8 @@
   \definecolor{zred}{HTML}{ba1200}
   \definecolor{zblue}{HTML}{33658a}
   \definecolor{zblack}{HTML}{0c090d}
+  \definecolor{zgreen}{HTML}{558b6e}
+  \definecolor{zorange}{HTML}{d8a47f}
 \usepackage{graphicx}
 \pagestyle{empty}
 
@@ -103,9 +106,39 @@
   \end{minipage}\hfill
   \begin{minipage}{0.34\textwidth}
   \raggedright
-  Fund your account and post a project.
-  Freelancers from anywhere start contributing, while our AI automatically handles
-  \emph{micropayments} --- rewarding only tangible results, not r\'{e}sum\'{e}s or promises.
+  Fund your account and freelancers from anywhere start contributing ---
+  our AI manages \emph{micropayments}, rewarding only tangible results, not r\'{e}sum\'{e}s or promises.
+  \end{minipage}}
+
+\slide{
+  \begin{minipage}{0.75\textwidth}
+  \centering
+  \newcommand\high{\textcolor{zgreen}{\(\bullet\)}}
+  \newcommand\soso{\textcolor{zorange}{\(\bullet\)}}
+  \newcommand\low{\textcolor{zred}{\(\bullet\)}}
+  \newcommand\hico[2]{\parbox[b]{2.1em}{\centering\includegraphics[width=2em]{#1} \\ {\scriptsize #2\par}}}
+  \renewcommand{\arraystretch}{1.2}%
+  \begin{tabular}{l|cccc>{\small\arraybackslash}l}
+    & \hico{office.pdf}{Co-located in-house team}
+    & \hico{india-flag.pdf}{Outsourcing and outstaffing}
+    & \hico{upwork.pdf}{Freelancers paid by time}
+    & \hico{logo.pdf}{} \\
+  \midrule
+  Predictability & \soso & \soso & \low & \high
+    & \href{https://www.yegor256.com/2018/03/21/zerocracy-announcement.html}{why?} \\
+  Cost Efficiency & \low & \low & \soso & \high
+    & \href{https://www.yegor256.com/2016/01/19/how-expensive-is-outsourcing.html}{why?} \\
+  Productivity & \soso & \soso & \low & \high
+    & \href{https://www.yegor256.com/2014/04/11/cost-of-loc.html}{why?} \\
+  Code Quality & \soso & \low & \low & \high
+    & \href{https://www.yegor256.com/2016/08/05/distributed-teams-are-higher-quality.html}{why?} \\
+  Scalability & \low & \soso & \high & \high
+    & \href{https://www.yegor256.com/2016/03/01/how-we-interview-programmers.html}{why?} \\
+  \end{tabular}
+  \end{minipage}\hfill
+  \begin{minipage}{0.24\textwidth}
+  \raggedright
+  Yes
   \end{minipage}}
 
 \slide{
