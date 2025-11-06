@@ -117,8 +117,9 @@
   \newcommand\low{\textcolor{zred}{\(\bullet\)}}
   \newcommand\hico[2]{\parbox[b]{2.1em}{\centering\includegraphics[width=2em]{#1} \\ {\scriptsize #2\par}}}
   \newcommand\criteria[2]{\parbox{7em}{\raggedright #1 \\ {\scriptsize #2\par}\vspace{.4em}}}
+  \newcommand\because[1]{\parbox{8em}{\small\raggedright #1\par}}
   \renewcommand{\arraystretch}{1.0}%
-  \begin{tabular}{l|ccccc>{\small\arraybackslash}l}
+  \begin{tabular}{l|cccccl}
     & \hico{office.pdf}{Co-located in-house team}
     & \hico{india-flag.pdf}{Outsourcing and outstaffing}
     & \hico{handshake.pdf}{Fixed-price sub-contracts}
@@ -127,20 +128,21 @@
   \midrule
   \criteria{Predictability}{Do you know when it'll be done?}
     & \high & \soso & \low & \low & \high
-    & \href{https://www.yegor256.com/2018/03/21/zerocracy-announcement.html}{why?} \\
+    & \because{Because you \href{https://www.yegor256.com/2010/03/04/pdd.html}{decompose} down to 30-minutes \href{https://www.yegor256.com/2017/11/28/microtasking.html}{microtasks}.} \\
   \criteria{Cost Efficiency}{Are you spending money wisely?}
     & \low & \low & \soso & \soso & \high
-    & \href{https://www.yegor256.com/2016/01/19/how-expensive-is-outsourcing.html}{why?} \\
+    & \because{Because you pay \href{https://www.yegor256.com/2016/01/19/how-expensive-is-outsourcing.html}{only} for artifacts, not \href{https://www.yegor256.com/2015/07/21/hourly-pay-modern-slavery.html}{time}.} \\
   \criteria{Productivity}{Is your team fast enough?}
     & \low & \soso & \soso & \high & \high
-    & \href{https://www.yegor256.com/2014/04/11/cost-of-loc.html}{why?} \\
+    & \because{Because you \href{https://www.yegor256.com/2014/04/11/cost-of-loc.html}{motivate} programmers to \href{https://www.yegor256.com/2014/04/17/how-xdsd-is-different.html}{deliver}.} \\
   \criteria{Code Quality}{Will your code last?}
     & \soso & \low & \soso & \low & \high
-    & \href{https://www.yegor256.com/2016/08/05/distributed-teams-are-higher-quality.html}{why?} \\
+    & \because{Because you \href{https://www.yegor256.com/2016/08/05/distributed-teams-are-higher-quality.html}{frequently} integrate and check.} \\
   \criteria{Scalability}{Can your team flex?}
     & \low & \soso & \low & \high & \high
-    & \href{https://www.yegor256.com/2016/03/01/how-we-interview-programmers.html}{why?} \\
-  \end{tabular}}
+    & \because{Because you on-board and discharge \href{https://www.yegor256.com/2016/03/01/how-we-interview-programmers.html}{instantly}.} \\
+  \end{tabular}\par
+  {\scriptsize \url{https://www.yegor256.com/2019/03/29/concerns.html}}}
 
 \slide{
   Result-based distributed teams are redefining software engineering ---
