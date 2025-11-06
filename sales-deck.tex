@@ -13,6 +13,8 @@
   \newfontfamily\cyrillicfonttt{Noto Sans Mono}
 \usepackage{microtype}
 \usepackage{tikz}
+  \usetikzlibrary{arrows}
+  \usetikzlibrary{arrows.meta}
 \usepackage[export]{adjustbox}
 \usepackage{anyfontsize}
 \usepackage{booktabs}
@@ -81,6 +83,29 @@
   \raggedright
   Using predefined \emph{rules} and AI-powered judgment, our chatbot assigns points,
   explains each decision, and guides programmers to improve.
+  \end{minipage}}
+
+\slide{
+  \begin{minipage}{0.65\textwidth}
+  \centering
+  \begin{tikzpicture}
+    [node distance=6em, every edge/.style={draw, line width=.1em, -{triangle 45}}]
+    \node[] (logo) {\includesvg[width=3em]{logo.svg}};
+    \node[left of=logo] (you) {You};
+    \node[above right of=logo] (c1) {\parbox{3em}{Java Dev}};
+    \node[right of=logo] (c2) {\parbox{3em}{Python Dev}};
+    \node[below right of=logo] (c3) {\parbox{3em}{C++ Dev}};
+    \path (you) edge (logo);
+    \path (logo) edge (c1);
+    \path (logo) edge (c2);
+    \path (logo) edge (c3);
+  \end{tikzpicture}
+  \end{minipage}\hfill
+  \begin{minipage}{0.34\textwidth}
+  \raggedright
+  Fund your account and post a project.
+  Freelancers from anywhere start contributing, while our AI automatically handles
+  \emph{micropayments} --- rewarding only tangible results, not r\'{e}sum\'{e}s or promises.
   \end{minipage}}
 
 \slide{
