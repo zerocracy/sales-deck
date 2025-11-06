@@ -111,7 +111,6 @@
   \end{minipage}}
 
 \slide{
-  \begin{minipage}{0.75\textwidth}
   \centering
   \newcommand\high{\textcolor{zgreen}{\(\bullet\)}}
   \newcommand\soso{\textcolor{zorange}{\(\bullet\)}}
@@ -119,33 +118,33 @@
   \newcommand\hico[2]{\parbox[b]{2.1em}{\centering\includegraphics[width=2em]{#1} \\ {\scriptsize #2\par}}}
   \newcommand\criteria[2]{\parbox{7em}{\raggedright #1 \\ {\scriptsize #2\par}\vspace{.5em}}}
   \renewcommand{\arraystretch}{1.1}%
-  \begin{tabular}{l|cccc>{\small\arraybackslash}l}
+  \begin{tabular}{l|ccccc>{\small\arraybackslash}l}
     & \hico{office.pdf}{Co-located in-house team}
     & \hico{india-flag.pdf}{Outsourcing and outstaffing}
+    & \hico{handshake.pdf}{Fixed-price sub-contracts}
     & \hico{upwork.pdf}{Freelancers paid by time}
     & \hico{logo.pdf}{} \\
   \midrule
   \criteria{Predictability}{Know what you'll get and when.}
-    & \high & \soso & \low & \high
+    & \high & \soso & \low & \low & \high
     & \href{https://www.yegor256.com/2018/03/21/zerocracy-announcement.html}{why?} \\
   \criteria{Cost Efficiency}{Do more with less.}
-    & \low & \low & \soso & \high
+    & \low & \low & \soso & \soso & \high
     & \href{https://www.yegor256.com/2016/01/19/how-expensive-is-outsourcing.html}{why?} \\
   \criteria{Productivity}{Get things done faster.}
-    & \low & \soso & \high & \high
+    & \low & \soso & \soso & \high & \high
     & \href{https://www.yegor256.com/2014/04/11/cost-of-loc.html}{why?} \\
   \criteria{Code Quality}{Easy-to-improve software that lasts.}
-    & \soso & \low & \low & \high
+    & \soso & \low & \soso & \low & \high
     & \href{https://www.yegor256.com/2016/08/05/distributed-teams-are-higher-quality.html}{why?} \\
   \criteria{Scalability}{Team grows or shrinks on demand.}
-    & \low & \soso & \high & \high
+    & \low & \soso & \low & \high & \high
     & \href{https://www.yegor256.com/2016/03/01/how-we-interview-programmers.html}{why?} \\
-  \end{tabular}
-  \end{minipage}\hfill
-  \begin{minipage}{0.24\textwidth}
-  \raggedright
-  Result-based teams are redefining software engineering --- and \emph{outperforming} every traditional model.
-  \end{minipage}}
+  \end{tabular}}
+
+\slide{
+  Result-based distributed teams are redefining software engineering ---
+  and \emph{outperforming} every traditional model.}
 
 \slide{
   Join our Telegram chat:\\
