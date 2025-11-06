@@ -117,28 +117,34 @@
   \newcommand\soso{\textcolor{zorange}{\(\bullet\)}}
   \newcommand\low{\textcolor{zred}{\(\bullet\)}}
   \newcommand\hico[2]{\parbox[b]{2.1em}{\centering\includegraphics[width=2em]{#1} \\ {\scriptsize #2\par}}}
-  \renewcommand{\arraystretch}{1.2}%
+  \newcommand\criteria[2]{\parbox{7em}{\raggedright #1 \\ {\scriptsize #2\par}\vspace{.5em}}}
+  \renewcommand{\arraystretch}{1.1}%
   \begin{tabular}{l|cccc>{\small\arraybackslash}l}
     & \hico{office.pdf}{Co-located in-house team}
     & \hico{india-flag.pdf}{Outsourcing and outstaffing}
     & \hico{upwork.pdf}{Freelancers paid by time}
     & \hico{logo.pdf}{} \\
   \midrule
-  Predictability & \soso & \soso & \low & \high
+  \criteria{Predictability}{Know what you'll get and when.}
+    & \high & \soso & \low & \high
     & \href{https://www.yegor256.com/2018/03/21/zerocracy-announcement.html}{why?} \\
-  Cost Efficiency & \low & \low & \soso & \high
+  \criteria{Cost Efficiency}{Do more with less.}
+    & \low & \low & \soso & \high
     & \href{https://www.yegor256.com/2016/01/19/how-expensive-is-outsourcing.html}{why?} \\
-  Productivity & \soso & \soso & \low & \high
+  \criteria{Productivity}{Get things done faster.}
+    & \low & \soso & \high & \high
     & \href{https://www.yegor256.com/2014/04/11/cost-of-loc.html}{why?} \\
-  Code Quality & \soso & \low & \low & \high
+  \criteria{Code Quality}{Easy-to-improve software that lasts.}
+    & \soso & \low & \low & \high
     & \href{https://www.yegor256.com/2016/08/05/distributed-teams-are-higher-quality.html}{why?} \\
-  Scalability & \low & \soso & \high & \high
+  \criteria{Scalability}{Team grows or shrinks on demand.}
+    & \low & \soso & \high & \high
     & \href{https://www.yegor256.com/2016/03/01/how-we-interview-programmers.html}{why?} \\
   \end{tabular}
   \end{minipage}\hfill
   \begin{minipage}{0.24\textwidth}
   \raggedright
-  Yes
+  Result-based teams are redefining software engineering --- and \emph{outperforming} every traditional model.
   \end{minipage}}
 
 \slide{
