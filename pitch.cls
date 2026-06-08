@@ -29,7 +29,6 @@
 \RequirePackage{hyperref}
   \hypersetup{colorlinks=true,allcolors=blue}
 \RequirePackage{xcolor}
-\RequirePackage{xcolor}
   \iexec[quiet,log]{wget --quiet --no-check-certificate --no-clobber https://www.zerocracy.com/css/palette.css}
   \iexec{grep -oE '\\.[a-zA-Z0-9_-]+\\\{color:.[0-9a-fA-F]+' < palette.css | sed -E 's/\\.([a-zA-Z0-9_-]+)\\\{color:.([0-9a-fA-F]+)/\\\\definecolor\{\\1\}\{HTML\}\{\\2\}/' > palette.tex}
   \input{palette.tex}
