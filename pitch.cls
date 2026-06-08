@@ -17,7 +17,6 @@
 \RequirePackage{anyfontsize}
 \RequirePackage{booktabs}
 \RequirePackage{tabularx}
-\RequirePackage{href-ul}
 \RequirePackage{csquotes}
 \RequirePackage{textcomp}
 \RequirePackage{iexec}
