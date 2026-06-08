@@ -12,4 +12,4 @@ all: sales-deck.pdf founder-pitch.pdf
 	latexmk -pdf -latexoption=-interaction=errorstopmode -latexoption=-halt-on-error $<
 
 clean:
-	git clean -dfX
+	git clean -dfX -e .opencode/
