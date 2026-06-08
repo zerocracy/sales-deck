@@ -25,11 +25,10 @@ jobs:
           debs: fonts-noto-core fonts-noto-extra
           depends: DEPENDS.txt
           before: |
-            FONTS=$(find /usr/local/texlive -name 'PTSerif-Regular.otf' -type f | head -1)
-            if [ -n "$FONTS" ]; then
-              cp "$(dirname "$FONTS")"/*.otf /usr/local/share/fonts/
-              fc-cache -f
-            fi
+            mkdir -p /usr/local/share/fonts
+            find /usr/local/texlive -path '*/paratype/*.ttf' -exec cp -t /usr/local/share/fonts/ {} +
+            find /usr/local/texlive -path '*/paratype/*.otf' -exec cp -t /usr/local/share/fonts/ {} +
+            fc-cache -f
       - run: |
           mkdir gh-pages
           cp sales-deck.pdf gh-pages
