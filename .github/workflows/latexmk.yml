@@ -19,7 +19,7 @@ jobs:
       - uses: yegor256/latexmk-action@0.20.0
         with:
           opts: -pdf
-          debs: fonts-noto-core fonts-noto-extra
+          debs: fonts-noto-core fonts-noto-extra fonts-pt
           depends: DEPENDS.txt
       - run: |
           mkdir gh-pages
