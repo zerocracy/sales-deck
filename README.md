@@ -19,16 +19,14 @@ and
 [`texqc`](https://rubygems.org/gems/texqc)
 installed.
 
-## Setup
-
-### macOS
+macOS:
 
 ```bash
 brew install aspell texlive
 gem install texsc texqc
 ```
 
-### Linux (Ubuntu/Debian)
+Linux (Ubuntu/Debian):
 
 ```bash
 sudo apt-get install aspell texlive-xetex texlive-fonts-extra
