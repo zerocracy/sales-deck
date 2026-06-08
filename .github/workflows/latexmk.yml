@@ -22,8 +22,14 @@ jobs:
       - uses: yegor256/latexmk-action@0.20.0
         with:
           opts: -pdf
-          debs: fonts-noto-core fonts-noto-extra fonts-pt
+          debs: fonts-noto-core fonts-noto-extra
           depends: DEPENDS.txt
+          before: |
+            FONTS=$(find /usr/local/texlive -name 'PTSerif-Regular.otf' -type f | head -1)
+            if [ -n "$FONTS" ]; then
+              cp "$(dirname "$FONTS")"/*.otf /usr/local/share/fonts/
+              fc-cache -f
+            fi
       - run: |
           mkdir gh-pages
           cp sales-deck.pdf gh-pages
