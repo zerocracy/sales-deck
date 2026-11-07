@@ -11,6 +11,10 @@ To build it, just run:
 make
 ```
 
+Make refreshes `logo.svg` and `palette.css` from the Zerocracy website and
+generates `palette.tex` before checking whether the PDFs need rebuilding.
+Unchanged files keep their timestamps.
+
 You need to have
 [`aspell`](http://aspell.net/),
 LaTeX (with packages from [`DEPENDS.txt`](DEPENDS.txt)),
@@ -32,3 +36,5 @@ Linux (Ubuntu/Debian):
 sudo apt-get install aspell texlive-xetex texlive-fonts-extra
 gem install texsc texqc
 ```
+
+The asset refresh regressions can also run without LaTeX: `make test-assets`.
