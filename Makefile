@@ -12,4 +12,5 @@ all: sales-deck.pdf founder-pitch.pdf
 	latexmk -pdf -latexoption=-interaction=errorstopmode -latexoption=-halt-on-error $<
 
 clean:
+	rm -f -- sales-deck.pdf founder-pitch.pdf
 	git clean -dfX -e .opencode/
