@@ -15,5 +15,8 @@ sales-deck.pdf: $(ASSETS) $(wildcard logo.svg)
 %.pdf: %.tex
 	latexmk -pdf -latexoption=-interaction=errorstopmode -latexoption=-halt-on-error $<
 
+test:
+	./test.sh
+
 clean:
 	git clean -dfX -e .opencode/
