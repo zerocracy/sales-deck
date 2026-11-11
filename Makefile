@@ -43,4 +43,5 @@ test-assets:
 FORCE:
 
 clean:
+	rm -f -- sales-deck.pdf founder-pitch.pdf
 	git clean -dfX -e .opencode/
