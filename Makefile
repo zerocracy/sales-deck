@@ -4,7 +4,7 @@
 .SHELLFLAGS=-e -o pipefail -c
 .ONESHELL:
 SHELL=bash
-.PHONY: all test test-assets clean FORCE
+.PHONY: test-incremental-build all test test-assets clean FORCE
 
 all: sales-deck.pdf founder-pitch.pdf
 
@@ -32,10 +32,10 @@ palette.tex: palette.css Makefile
 		mv "$${temp}" "$@"
 	fi
 
-%.pdf: %.tex logo.svg palette.tex
+%.pdf: %.tex logo.svg palette.tex pitch.cls
 	latexmk -pdf -latexoption=-interaction=errorstopmode -latexoption=-halt-on-error $<
 
-test: test-assets
+test: test-assets test-incremental-build
 
 test-assets:
 	bash test-assets.sh
@@ -45,3 +45,6 @@ FORCE:
 clean:
 	rm -f -- sales-deck.pdf founder-pitch.pdf
 	git clean -dfX -e .opencode/
+
+test-incremental-build:
+	bash test-incremental-build.sh Makefile

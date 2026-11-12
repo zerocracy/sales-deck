@@ -45,6 +45,7 @@ export REMOTE="${fixture}/remote"
 mkdir "${REMOTE}"
 cd "${fixture}"
 pdfs=(sales-deck.pdf founder-pitch.pdf)
+touch -t 200001010000 pitch.cls
 
 check_pdfs() {
     cat logo.svg palette.tex > expected.pdf
