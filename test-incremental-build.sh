@@ -1,37 +1,58 @@
 #!/usr/bin/env bash
 # SPDX-FileCopyrightText: Copyright (c) 2024-2025 Zerocracy
 # SPDX-License-Identifier: MIT
-
 set -euo pipefail
+
 makefile="$(cd "$(dirname "$1")" && pwd)/$(basename "$1")"
 scratch="$(mktemp -d)"
 trap 'rm -rf "$scratch"' EXIT
-mkdir "$scratch/bin" "$scratch/build"
+cp "$makefile" "$scratch/Makefile"
+mkdir "$scratch/bin"
+cat > "$scratch/bin/wget" <<'WGET'
+#!/usr/bin/env bash
+set -euo pipefail
+test "$#" -eq 4 && test "$1" = --quiet && test "$2" = -O
+case "$4" in
+  https://www.zerocracy.com/svg/logo.svg) printf 'same logo' > "$3" ;;
+  https://www.zerocracy.com/css/palette.css) printf '.steel{color:#010203}\n' > "$3" ;;
+  *) exit 2 ;;
+esac
+WGET
 cat > "$scratch/bin/latexmk" <<'LATEXMK'
 #!/usr/bin/env bash
 set -euo pipefail
-printf '%s\n' "${!#}" >> "$BUILD_LOG"
+source=${!#}
+printf '%s\n' "$source" >> calls.log
+cat pitch.cls > "${source%.tex}.pdf"
 LATEXMK
-chmod +x "$scratch/bin/latexmk"
+chmod +x "$scratch/bin/wget" "$scratch/bin/latexmk"
 export PATH="$scratch/bin:$PATH"
-export BUILD_LOG="$scratch/calls.log"
-cd "$scratch/build"
-for file in sales-deck.tex founder-pitch.tex pitch.cls .latexmkrc vitals.png palette.tex; do
-  touch -t 202601010000 "$file"
+cd "$scratch"
+printf 'same logo' > logo.svg
+printf '.steel{color:#010203}\n' > palette.css
+printf '\\definecolor{steel}{HTML}{010203}\n' > palette.tex
+printf 'old class' > pitch.cls
+touch sales-deck.tex founder-pitch.tex
+touch -t 200001010000 Makefile logo.svg palette.css palette.tex pitch.cls sales-deck.tex founder-pitch.tex
+for pdf in sales-deck.pdf founder-pitch.pdf; do
+  cp pitch.cls "$pdf"
+  touch -t 200001020000 "$pdf"
 done
-touch -t 202601020000 sales-deck.pdf founder-pitch.pdf
-for dependency in pitch.cls .latexmkrc vitals.png palette.tex; do
-  touch -t 202601030000 "$dependency"
-  : > "$BUILD_LOG"
-  make --no-print-directory -f "$makefile" all
-  if ! grep -qx sales-deck.tex "$BUILD_LOG"; then
-    echo "FAIL: sales-deck.tex was not checked after $dependency changed" >&2
+: > calls.log
+make --no-print-directory all
+test ! -s calls.log
+printf 'changed class' > pitch.cls
+touch -t 200001030000 pitch.cls
+make --no-print-directory -j2 all
+for source in sales-deck.tex founder-pitch.tex; do
+  if ! grep -qx "$source" calls.log; then
+    echo "FAIL: $source was not checked after pitch.cls changed" >&2
     exit 1
   fi
-  if [[ "$dependency" != vitals.png ]] && ! grep -qx founder-pitch.tex "$BUILD_LOG"; then
-    echo "FAIL: founder-pitch.tex was not checked after $dependency changed" >&2
-    exit 1
-  fi
-  touch -t 202601010000 "$dependency"
+  cmp pitch.cls "${source%.tex}.pdf"
 done
-echo 'PASS: shared class, configuration, image and generated palette changes reach latexmk'
+test "$(wc -l < calls.log)" -eq 2
+: > calls.log
+make --no-print-directory all
+test ! -s calls.log
+echo 'PASS: pitch.cls changes reach both latexmk calls; unchanged inputs do not'
