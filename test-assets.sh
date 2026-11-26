@@ -56,7 +56,7 @@ check_pdfs() {
 printf 'old logo' > logo.svg
 printf '.steel{color:#010203}\n' > palette.css
 printf '\\definecolor{steel}{HTML}{010203}\n' > palette.tex
-touch -t 200001010000 logo.svg palette.css palette.tex Makefile
+touch -t 200001010000 logo.svg palette.css palette.tex Makefile .latexmkrc
 for pdf in "${pdfs[@]}"; do
     touch -t 200001010000 "${pdf%.pdf}.tex"
     printf 'old PDF' > "${pdf}"
@@ -122,3 +122,13 @@ cmp "${REMOTE}/logo.svg" logo.svg
 cmp expected.tex palette.tex
 test "$(wc -l < builds.txt)" -eq "$((3 * ${#pdfs[@]}))"
 echo 'PASS: remote assets refresh, unchanged content skips rebuild, failures preserve generated output, CI assets prepare without LaTeX'
+
+touch -t 200001020000 logo.svg palette.css palette.tex
+touch -t 200001030000 sales-deck.pdf founder-pitch.pdf
+builds=$(wc -l < builds.txt)
+make --no-print-directory all
+test "$(wc -l < builds.txt)" -eq "${builds}"
+touch -t 200001040000 .latexmkrc
+make --no-print-directory all
+test "$(wc -l < builds.txt)" -eq "$((builds + ${#pdfs[@]}))"
+echo 'PASS: both decks rebuild after the latexmk configuration changes'
