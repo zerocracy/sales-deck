@@ -8,6 +8,8 @@ SHELL=bash
 
 all: sales-deck.pdf founder-pitch.pdf
 
+sales-deck.pdf founder-pitch.pdf: .latexmkrc
+
 logo.svg: FORCE
 	temp=$$(mktemp "$@.XXXXXX")
 	trap 'rm -f "$${temp}"' EXIT
