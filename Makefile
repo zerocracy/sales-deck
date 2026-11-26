@@ -12,6 +12,7 @@ logo.svg: FORCE
 	temp=$$(mktemp "$@.XXXXXX")
 	trap 'rm -f "$${temp}"' EXIT
 	wget --quiet -O "$${temp}" https://www.zerocracy.com/svg/logo.svg
+	test -s "$${temp}"
 	if ! cmp -s "$${temp}" "$@"; then
 		mv "$${temp}" "$@"
 	fi
@@ -20,6 +21,7 @@ palette.css: FORCE
 	temp=$$(mktemp "$@.XXXXXX")
 	trap 'rm -f "$${temp}"' EXIT
 	wget --quiet -O "$${temp}" https://www.zerocracy.com/css/palette.css
+	test -s "$${temp}"
 	if ! cmp -s "$${temp}" "$@"; then
 		mv "$${temp}" "$@"
 	fi
