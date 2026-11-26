@@ -105,6 +105,19 @@ for asset in logo.svg palette.css; do
     test -z "$(find . -name "${asset}.??????" -print)"
 done
 
+for asset in logo.svg palette.css; do
+    cp "${REMOTE}/${asset}" saved-asset
+    : > "${REMOTE}/${asset}"
+    if make --no-print-directory all; then
+        echo "An empty ${asset} download must fail the build" >&2
+        exit 1
+    fi
+    cmp saved-asset "${asset}"
+    check_pdfs
+    test -z "$(find . -name "${asset}.??????" -print)"
+    mv saved-asset "${REMOTE}/${asset}"
+done
+
 printf 'invalid palette' > "${REMOTE}/palette.css"
 if make --no-print-directory all; then
     echo 'A palette without color definitions must fail the build' >&2
