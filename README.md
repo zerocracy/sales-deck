@@ -33,7 +33,7 @@ gem install texsc texqc
 Linux (Ubuntu/Debian):
 
 ```bash
-sudo apt-get install aspell texlive-xetex texlive-fonts-extra
+sudo apt-get install aspell make wget latexmk inkscape texlive-xetex texlive-fonts-extra
 gem install texsc texqc
 ```
 
